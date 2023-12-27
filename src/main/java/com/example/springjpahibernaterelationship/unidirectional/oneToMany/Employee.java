@@ -1,9 +1,6 @@
 package com.example.springjpahibernaterelationship.unidirectional.oneToMany;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,4 +21,8 @@ public class Employee {
     private double salary;
 
     private String designation;
+
+    @ManyToOne
+    @JoinColumn(name = "department_id")
+    private Department department;
 }

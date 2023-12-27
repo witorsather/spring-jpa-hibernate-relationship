@@ -20,6 +20,6 @@ public class DepartmentBiOtm {
 
     private String name;
 
-    @OneToMany(mappedBy = "department")
-    private List<Employee> employees;
+    @OneToMany(mappedBy = "departmentBiOtm")
+    private List<EmployeeBiOtm> employeeBiOtms;
 }

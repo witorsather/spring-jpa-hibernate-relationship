@@ -19,4 +19,7 @@ public class Department {
     private int id;
 
     private String name;
+
+    @OneToMany
+    private List<Employee> employees;
 }

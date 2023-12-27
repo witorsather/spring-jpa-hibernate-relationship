@@ -16,6 +16,7 @@ import java.util.List;
 public class StudentBiMtm {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     private String name;

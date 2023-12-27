@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Employee {
+public class EmployeeBiOtm {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -23,5 +23,6 @@ public class Employee {
     private String designation;
 
     @ManyToOne
+    @JoinColumn(name = "department_id")
     private DepartmentBiOtm departmentBiOtm;
 }

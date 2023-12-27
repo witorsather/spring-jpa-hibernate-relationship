@@ -6,7 +6,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PersistUniOtm {
+public class PersistBiOtm {
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -20,30 +20,41 @@ public class PersistUniOtm {
         // store department
         entityManager.persist(departmentBiOtm);
 
+        // create department entity
+        DepartmentBiOtm departmentBiOtm2 = DepartmentBiOtm.builder()
+                .name("Development")
+                .build();
+
+        // store department
+        entityManager.persist(departmentBiOtm2);
+
         // create employee1
-        Employee employee1 = Employee.builder()
+        EmployeeBiOtm employeeBiOtm1 = EmployeeBiOtm.builder()
                 .name("John Smith")
                 .salary(6500.0)
                 .designation("Recruitment Specialist")
+                .departmentBiOtm(departmentBiOtm)
                 .build();
 
         // create employee2
-        Employee employee2 = Employee.builder()
+        EmployeeBiOtm employeeBiOtm2 = EmployeeBiOtm.builder()
                 .name("Emily Kim")
                 .salary(8500.0)
                 .designation("HR Manager")
+                .departmentBiOtm(departmentBiOtm)
                 .build();
 
         // create employee3
-        Employee employee3 = Employee.builder()
+        EmployeeBiOtm employeeBiOtm3 = EmployeeBiOtm.builder()
                 .name("Liam Johnson")
-                .salary(8500.0)
-                .designation("HR Assistant")
+                .salary(7500.0)
+                .designation("Developer")
+                .departmentBiOtm(departmentBiOtm2)
                 .build();
 
         // store employees
-        entityManager.persist(employee1);
-//        entityManager.persist(employee2);
-//        entityManager.persist(employee3);
+        entityManager.persist(employeeBiOtm1);
+        entityManager.persist(employeeBiOtm2);
+        entityManager.persist(employeeBiOtm3);
     }
 }
